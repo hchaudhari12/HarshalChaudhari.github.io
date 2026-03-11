@@ -3,278 +3,930 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Portfolio</title>
-  <meta name="description" content="Portfolio website for Your Name: projects, skills, and contact." />
+  <title>Harshal Chaudhari — Portfolio</title>
+  <meta name="description" content="Harshal Chaudhari portfolio: Chemical Engineering, Process Simulation, Sustainability, LCA, Aspen Plus, COMSOL." />
   <style>
     :root{
       --bg:#0b1020;
-      --card:#111a33;
-      --muted:#8ea0c6;
-      --text:#eaf0ff;
+      --bg2:#070b16;
+      --card:#0f1730;
+      --card2:#0c1228;
+      --muted:#9bb0df;
+      --text:#edf3ff;
       --accent:#7c5cff;
       --accent2:#22c55e;
-      --border: rgba(255,255,255,.10);
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --accent3:#38bdf8;
+      --border: rgba(255,255,255,.11);
+      --shadow: 0 18px 60px rgba(0,0,0,.40);
       --radius: 18px;
-      --max: 1040px;
+      --max: 1120px;
     }
+    [data-theme="light"]{
+      --bg:#f6f7fb;
+      --bg2:#ffffff;
+      --card:#ffffff;
+      --card2:#ffffff;
+      --muted:#4b5a7a;
+      --text:#0a1020;
+      --border: rgba(10,16,32,.12);
+      --shadow: 0 16px 40px rgba(10,16,32,.10);
+    }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 15% 10%, rgba(124,92,255,.30), transparent 60%),
-        radial-gradient(900px 500px at 85% 10%, rgba(34,197,94,.20), transparent 60%),
-        radial-gradient(900px 500px at 50% 90%, rgba(56,189,248,.18), transparent 60%),
-        var(--bg);
+        radial-gradient(900px 520px at 15% 10%, rgba(124,92,255,.22), transparent 60%),
+        radial-gradient(900px 520px at 85% 10%, rgba(34,197,94,.16), transparent 60%),
+        radial-gradient(900px 520px at 50% 92%, rgba(56,189,248,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
       line-height:1.55;
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px 16px 80px}
     .nav{
-      position: sticky; top:0; z-index:50;
+      position: sticky; top:0; z-index:80;
       backdrop-filter: blur(10px);
-      background: rgba(11,16,32,.55);
+      background: color-mix(in srgb, var(--bg) 70%, transparent);
       border-bottom:1px solid var(--border);
     }
-    .nav-inner{max-width:var(--max); margin:0 auto; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
-    .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--accent), #38bdf8)}
-    .links{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
-    .links a{padding:8px 10px; border:1px solid transparent; border-radius:999px; color:var(--muted)}
+    .nav-inner{
+      max-width:var(--max); margin:0 auto; padding:12px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--accent), var(--accent3))}
+    .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; align-items:center}
+    .links a{
+      padding:8px 10px; border-radius:999px;
+      border:1px solid transparent; color: color-mix(in srgb, var(--muted) 92%, transparent);
+      text-decoration:none; font-weight:650; font-size:13px;
+    }
     .links a:hover{border-color:var(--border); color:var(--text)}
-    .hero{padding:44px 0 20px; display:grid; grid-template-columns: 1.25fr .75fr; gap:22px; align-items:stretch}
-    @media (max-width: 880px){ .hero{grid-template-columns:1fr} }
+    .links a.active{border-color:color-mix(in srgb, var(--accent) 55%, var(--border)); color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px; padding:11px 13px;
+      border-radius:12px; border:1px solid var(--border);
+      background: color-mix(in srgb, var(--card) 88%, transparent);
+      color:var(--text); font-weight:800;
+      text-decoration:none;
+      transition: transform .12s ease, opacity .12s ease, border-color .12s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+    }
+    .btn.good{
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent2), #16a34a);
+      color:#052012;
+    }
+    .btn.ghost{
+      background: transparent;
+    }
+    .btn.small{padding:8px 10px; border-radius:10px; font-size:13px; font-weight:800}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--border); padding:4px 8px; border-radius:10px;
+      background: color-mix(in srgb, var(--card) 70%, transparent);
+    }
+
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--card) 92%, transparent), color-mix(in srgb, var(--card2) 92%, transparent));
       border:1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .hero-main{padding:28px}
-    .kicker{color:var(--muted); font-weight:600; letter-spacing:.3px}
+
+    .hero{
+      padding:34px 0 10px;
+      display:grid; grid-template-columns: 1.25fr .75fr; gap:16px; align-items:stretch
+    }
+    @media (max-width: 940px){ .hero{grid-template-columns:1fr} }
+    .hero-main{padding:24px}
+    .kicker{color:var(--muted); font-weight:800; letter-spacing:.35px; font-size:12px}
     h1{margin:10px 0 10px; font-size:44px; line-height:1.08}
     @media (max-width: 520px){ h1{font-size:36px} }
-    .sub{color:var(--muted); max-width:62ch; margin:0 0 18px}
-    .pill-row{display:flex; gap:10px; flex-wrap:wrap; margin:16px 0 0}
+    .sub{color:var(--muted); max-width:66ch; margin:0 0 14px}
+    .pill-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .pill{
       font-size:13px; color:var(--muted);
       border:1px solid var(--border);
       padding:8px 10px; border-radius:999px;
-      background: rgba(255,255,255,.03);
+      background: color-mix(in srgb, var(--card) 70%, transparent);
     }
-    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px; padding:12px 14px;
-      border-radius:12px; border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color:var(--text); font-weight:700;
-    }
-    .btn:hover{transform: translateY(-1px)}
-    .btn.primary{
-      border-color: transparent;
-      background: linear-gradient(135deg, var(--accent), #38bdf8);
-    }
-    .btn.good{
-      border-color: transparent;
-      background: linear-gradient(135deg, var(--accent2), #22c55e);
-      color:#06210f;
-    }
-    .hero-side{display:grid; grid-template-rows:auto 1fr; gap:14px; padding:16px}
-    .mini{padding:18px}
-    .mini h3{margin:0 0 8px; font-size:16px}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .hero-side{padding:14px; display:grid; gap:12px}
+    .mini{padding:16px; box-shadow:none}
+    .mini h3{margin:0 0 8px; font-size:15px}
     .mini p{margin:0; color:var(--muted)}
     .avatar{
-      width:66px; height:66px; border-radius:18px;
+      width:62px; height:62px; border-radius:18px;
       display:grid; place-items:center;
-      background: linear-gradient(135deg, rgba(124,92,255,.45), rgba(56,189,248,.35));
+      background: linear-gradient(135deg, rgba(124,92,255,.32), rgba(56,189,248,.26));
       border:1px solid var(--border);
-      font-weight:900; font-size:22px;
+      font-weight:1000; font-size:22px;
     }
-    .section{margin-top:26px}
-    .section h2{margin:0 0 12px; font-size:18px; letter-spacing:.2px}
-    .grid{display:grid; gap:14px}
-    .projects{grid-template-columns: repeat(3, 1fr)}
-    @media (max-width: 980px){ .projects{grid-template-columns: repeat(2, 1fr)} }
-    @media (max-width: 640px){ .projects{grid-template-columns: 1fr} }
-    .proj{padding:18px}
-    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-    .tag{font-size:12px; color:var(--muted); border:1px solid var(--border); padding:6px 8px; border-radius:999px}
-    .proj h3{margin:0 0 6px; font-size:16px}
-    .proj p{margin:0; color:var(--muted)}
-    .proj .meta{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
-    .proj .meta a{font-weight:700; color:var(--text); opacity:.9}
-    .proj .meta a:hover{opacity:1; text-decoration:underline}
+
+    .section{margin-top:22px}
+    .section h2{margin:0 0 10px; font-size:18px; letter-spacing:.2px}
+    .grid{display:grid; gap:12px}
+    .three{grid-template-columns: repeat(3, 1fr)}
+    @media (max-width: 980px){ .three{grid-template-columns: repeat(2, 1fr)} }
+    @media (max-width: 640px){ .three{grid-template-columns: 1fr} }
     .two{grid-template-columns: 1fr 1fr}
-    @media (max-width: 860px){ .two{grid-template-columns:1fr} }
-    .box{padding:18px}
-    ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
-    li{margin:6px 0}
-    .footer{margin-top:30px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-    .small{font-size:13px}
-    .kbd{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size:12px; color:var(--muted);
-      border:1px solid var(--border); padding:4px 8px; border-radius:10px;
-      background: rgba(255,255,255,.03);
+    @media (max-width: 900px){ .two{grid-template-columns:1fr} }
+
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      margin:10px 0 0;
     }
-    .notice{margin-top:10px; color:var(--muted); font-size:13px}
+    .search{
+      flex:1; min-width:240px;
+      display:flex; gap:10px; align-items:center;
+      background: color-mix(in srgb, var(--card) 86%, transparent);
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:10px 12px;
+    }
+    .search input{
+      flex:1; border:0; outline:0; background:transparent;
+      color:var(--text); font-weight:700; font-size:14px;
+    }
+    .chips{display:flex; gap:8px; flex-wrap:wrap}
+    .chip{
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--card) 78%, transparent);
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip.active{border-color: color-mix(in srgb, var(--accent) 60%, var(--border)); color:var(--text)}
+    .proj{padding:16px; display:flex; flex-direction:column; gap:10px}
+    .proj h3{margin:0; font-size:16px}
+    .proj p{margin:0; color:var(--muted)}
+    .tagrow{display:flex; gap:8px; flex-wrap:wrap}
+    .tag{font-size:12px; color:var(--muted); border:1px solid var(--border); padding:6px 8px; border-radius:999px}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto}
+    .meta a{font-weight:900; text-decoration:none}
+    .meta a:hover{text-decoration:underline}
+
+    details.accordion{
+      background: color-mix(in srgb, var(--card) 88%, transparent);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+    details.accordion summary{
+      list-style:none;
+      padding:14px 16px;
+      cursor:pointer;
+      display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
+      font-weight:900;
+    }
+    details.accordion summary::-webkit-details-marker{display:none}
+    .sum-left{display:flex; flex-direction:column; gap:2px}
+    .sum-title{font-size:15px}
+    .sum-sub{font-size:13px; color:var(--muted); font-weight:800}
+    .sum-right{color:var(--muted); font-size:13px; font-weight:900; white-space:nowrap}
+    .acc-body{padding:0 16px 14px; color:var(--muted)}
+    .acc-body ul{margin:8px 0 0; padding-left:18px}
+    .acc-body li{margin:6px 0}
+    .acc-actions{margin-top:10px; display:flex; gap:10px; flex-wrap:wrap}
+
+    .box{padding:16px}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .list li{margin:6px 0}
+
+    .footer{
+      margin-top:28px; padding-top:16px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      font-size:13px;
+    }
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed; inset:0; z-index:120;
+      background: rgba(0,0,0,.55);
+      display:none; align-items:center; justify-content:center;
+      padding:18px;
+    }
+    .modal{
+      width:min(860px, 100%);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--card) 95%, transparent), color-mix(in srgb, var(--card2) 95%, transparent));
+      border:1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 30px 100px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .modal-header{
+      padding:14px 16px;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      border-bottom:1px solid var(--border);
+    }
+    .modal-title{font-weight:1000}
+    .modal-body{padding:14px 16px; color:var(--muted)}
+    .modal-body ul{margin:10px 0 0; padding-left:18px}
+    .modal-body li{margin:6px 0}
+    .modal-footer{
+      padding:14px 16px;
+      border-top:1px solid var(--border);
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+
+    /* Floating */
+    .floatbar{
+      position:fixed; right:16px; bottom:16px; z-index:90;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .toast{
+      position:fixed; left:50%; bottom:22px; transform:translateX(-50%);
+      background: color-mix(in srgb, var(--card) 92%, rgba(0,0,0,.2));
+      border:1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding:10px 12px;
+      display:none;
+      color:var(--text);
+      font-weight:900;
+      font-size:13px;
+      z-index:200;
+    }
   </style>
 </head>
 <body>
-
   <div class="nav">
     <div class="nav-inner">
       <div class="brand">
         <span class="dot"></span>
-        <span>Your Name</span>
+        <span>Harshal Chaudhari</span>
       </div>
-      <div class="links">
+
+      <div class="links" id="navLinks">
         <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#education">Education</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#reports">Reports</a>
+        <button class="btn small ghost" id="themeBtn" aria-label="Toggle theme">🌙</button>
       </div>
     </div>
   </div>
 
   <main class="wrap">
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="card hero-main">
-        <div class="kicker">PORTFOLIO • 2026</div>
-        <h1>Hi, I’m <span style="color:#c7b9ff;">Your Name</span> —<br/>I build <span style="color:#a7f3d0;">impactful</span> things.</h1>
+        <div class="kicker">CHEMICAL ENGINEERING • PROCESS SIMULATION • SUSTAINABILITY</div>
+        <h1>Hi, I’m <span style="color:color-mix(in srgb, var(--accent) 75%, var(--text));">Harshal</span> —
+          I build <span style="color:color-mix(in srgb, var(--accent2) 65%, var(--text));">practical</span> engineering solutions.</h1>
         <p class="sub">
-          Write a 2–3 line intro here. Example: “I’m a student / engineer / designer focused on process engineering,
-          sustainability, and practical solutions. Here are a few projects I’m proud of.”
+          Master’s in Chemical Engineering (ASU, expected May 2026). I work on process modeling, simulation, and sustainability
+          projects—especially Aspen Plus electrolyte systems, COMSOL reactor simulations, and LCA.
         </p>
 
         <div class="cta">
           <a class="btn primary" href="#projects">View Projects →</a>
-          <a class="btn" href="mailto:youremail@example.com">Email Me</a>
-          <a class="btn good" href="https://linkedin.com/in/yourhandle" target="_blank" rel="noreferrer">LinkedIn</a>
+          <button class="btn" id="tourBtn">Guided Tour (go through once)</button>
+          <a class="btn good" href="mailto:hchaud12@asu.edu">Email: hchaud12@asu.edu</a>
+          <a class="btn" href="https://www.linkedin.com/in/harshal004" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
 
         <div class="pill-row">
-          <span class="pill">📍 Phoenix / Remote</span>
-          <span class="pill">🧪 Process & Sustainability</span>
-          <span class="pill">⚡ Open to internships</span>
-          <span class="pill">📄 Resume available</span>
+          <span class="pill">📍 Phoenix / USA</span>
+          <span class="pill">🧪 Aspen Plus • COMSOL • OpenLCA • SimaPro</span>
+          <span class="pill">📄 GPA: 3.3 (MS) • 3.8 (BS)</span>
+          <span class="pill">⚡ Open to internships / projects</span>
         </div>
 
-        <div class="notice">
-          Tip: Replace text like <span class="kbd">Your Name</span>, <span class="kbd">youremail@example.com</span>, and your links.
+        <div style="margin-top:12px; color:var(--muted); font-size:13px;">
+          Tip: Add your PDF resume and project reports in the <span class="kbd">/assets</span> folder (explained below).
         </div>
       </div>
 
       <div class="card hero-side">
-        <div class="card mini" style="box-shadow:none;">
+        <div class="card mini">
           <div style="display:flex; gap:12px; align-items:center;">
-            <div class="avatar">YN</div>
+            <div class="avatar">HC</div>
             <div>
               <h3 style="margin:0">Quick Info</h3>
-              <p style="margin:4px 0 0; color:var(--muted)">Your title (e.g., Chemical Engineering Student)</p>
+              <p style="margin:4px 0 0; color:var(--muted)">MS Chemical Engineering — Arizona State University</p>
             </div>
           </div>
         </div>
-        <div class="card mini" style="box-shadow:none;">
-          <h3>Highlights</h3>
-          <p>• Strong interest in sustainability + engineering</p>
-          <p>• Projects: modeling, simulation, research</p>
-          <p>• Tools: Aspen / COMSOL / MATLAB (edit)</p>
+
+        <div class="card mini">
+          <h3>What I’m strongest at</h3>
+          <p>• Electrolyte process simulation + solids precipitation (Aspen Plus)</p>
+          <p>• Multiphysics reactor modeling (COMSOL)</p>
+          <p>• LCA + sustainability analysis (OpenLCA, SimaPro)</p>
+        </div>
+
+        <div class="card mini">
+          <h3>Fast Actions</h3>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn small" href="#reports">Add reports →</a>
+            <button class="btn small" id="expandAllBtn">Expand all accordions</button>
+            <button class="btn small" id="collapseAllBtn">Collapse all</button>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- PROJECTS -->
     <section class="section" id="projects">
-      <h2>Projects</h2>
-      <div class="grid projects">
-        <div class="card proj">
-          <h3>Project 1 — Title</h3>
-          <p>1–2 lines: what you did + result. Example: “Modeled X, improved Y by Z%, validated with …”</p>
+      <h2>Projects (click “Details” to open)</h2>
+
+      <div class="toolbar">
+        <div class="search">
+          🔎 <input id="searchInput" placeholder="Search projects (e.g., Aspen, LCA, COMSOL, ammonia, urine…)" />
+        </div>
+        <div class="chips" id="chips">
+          <div class="chip active" data-filter="all">All</div>
+          <div class="chip" data-filter="aspen">Aspen</div>
+          <div class="chip" data-filter="comsol">COMSOL</div>
+          <div class="chip" data-filter="lca">LCA</div>
+          <div class="chip" data-filter="sustainability">Sustainability</div>
+        </div>
+      </div>
+
+      <div class="grid three" id="projectGrid" style="margin-top:12px;">
+        <!-- 1 -->
+        <div class="card proj project" data-tags="aspen sustainability" data-title="NPK Extraction from Human Urine (Aspen Plus)">
+          <h3>Process Design & Aspen Modeling — NPK Extraction from Human Urine</h3>
+          <p>Integrated ammonia stripping + precipitation + evaporation (ELECNRTL), complex electrolyte chemistry + solid precipitation.</p>
           <div class="tagrow">
-            <span class="tag">Aspen</span><span class="tag">Process</span><span class="tag">Sustainability</span>
+            <span class="tag">Aspen Plus</span><span class="tag">ELECNRTL</span><span class="tag">Struvite</span><span class="tag">Hydroxyapatite</span>
           </div>
           <div class="meta">
-            <a href="#" target="_blank" rel="noreferrer">Case Study</a>
-            <a href="#" target="_blank" rel="noreferrer">GitHub</a>
+            <button class="btn small" data-open="p1">Details</button>
+            <a class="btn small" href="#reports">Add report</a>
           </div>
         </div>
 
-        <div class="card proj">
-          <h3>Project 2 — Title</h3>
-          <p>1–2 lines describing the project. Mention metrics or outcome if possible.</p>
+        <!-- 2 -->
+        <div class="card proj project" data-tags="lca sustainability" data-title="LCA of Lignocellulosic Biomass to Jet Fuel">
+          <h3>LCA — Lignocellulosic Biomass to Jet Fuel</h3>
+          <p>Cradle-to-grave LCA for poplar-to-biojet via RCF + HDO; quantified GWP and energy balance.</p>
           <div class="tagrow">
-            <span class="tag">COMSOL</span><span class="tag">Modeling</span><span class="tag">CFD</span>
+            <span class="tag">OpenLCA/SimaPro</span><span class="tag">RCF</span><span class="tag">HDO</span><span class="tag">GWP</span>
           </div>
           <div class="meta">
-            <a href="#" target="_blank" rel="noreferrer">Report</a>
-            <a href="#" target="_blank" rel="noreferrer">Demo</a>
+            <button class="btn small" data-open="p2">Details</button>
+            <a class="btn small" href="#reports">Add report</a>
           </div>
         </div>
 
-        <div class="card proj">
-          <h3>Project 3 — Title</h3>
-          <p>Short description. Keep it clear and outcomes-focused.</p>
+        <!-- 3 -->
+        <div class="card proj project" data-tags="comsol" data-title="Steam Reformer Simulation Analysis (COMSOL)">
+          <h3>COMSOL — Steam Reformer Simulation Analysis</h3>
+          <p>Propane steam reformer: catalyst bed + heating tubes; studied gradients, yield and operating parameters.</p>
           <div class="tagrow">
-            <span class="tag">Research</span><span class="tag">Adsorption</span><span class="tag">Wastewater</span>
+            <span class="tag">COMSOL</span><span class="tag">Multiphysics</span><span class="tag">Hydrogen</span><span class="tag">Reactor</span>
           </div>
           <div class="meta">
-            <a href="#" target="_blank" rel="noreferrer">Slides</a>
-            <a href="#" target="_blank" rel="noreferrer">Paper</a>
+            <button class="btn small" data-open="p3">Details</button>
+            <a class="btn small" href="#reports">Add report</a>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="card proj project" data-tags="sustainability lca" data-title="Life cycle analysis of ammonia production (PEM electrolysis)">
+          <h3>Life Cycle Analysis — Ammonia Production (PEM Electrolysis)</h3>
+          <p>Researched renewable ammonia route; modeled 1000–1500 TPD and assessed CO₂ reduction + economics.</p>
+          <div class="tagrow">
+            <span class="tag">PEM Electrolysis</span><span class="tag">Ammonia</span><span class="tag">CO₂ Reduction</span>
+          </div>
+          <div class="meta">
+            <button class="btn small" data-open="p4">Details</button>
+            <a class="btn small" href="#reports">Add report</a>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="card proj project" data-tags="sustainability" data-title="Porous polymeric adsorbent for phenol removal">
+          <h3>Porous Polymeric Adsorbent — Phenol Removal from Water</h3>
+          <p>Synthesized polymeric adsorbents; adsorption process design; kinetics/isotherms; presented at symposium.</p>
+          <div class="tagrow">
+            <span class="tag">Adsorption</span><span class="tag">Kinetics</span><span class="tag">Isotherms</span><span class="tag">Wastewater</span>
+          </div>
+          <div class="meta">
+            <button class="btn small" data-open="p5">Details</button>
+            <a class="btn small" href="#reports">Add report</a>
+          </div>
+        </div>
+
+        <!-- 6 (Placeholder for your next project) -->
+        <div class="card proj project" data-tags="sustainability" data-title="Add your next project">
+          <h3>Next Project (Add this)</h3>
+          <p>Add your next project here (internship, new simulation, research, certification, etc.).</p>
+          <div class="tagrow">
+            <span class="tag">Coming soon</span><span class="tag">Update</span>
+          </div>
+          <div class="meta">
+            <button class="btn small" data-open="p6">How to add</button>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section grid two" id="skills">
-      <div class="card box">
-        <h2>Skills</h2>
-        <ul>
-          <li><b>Engineering:</b> process modeling, mass transfer, reactor basics (edit)</li>
-          <li><b>Software:</b> Aspen Plus, COMSOL, MATLAB/Excel (edit)</li>
-          <li><b>Methods:</b> LCA, data analysis, optimization (edit)</li>
-        </ul>
-      </div>
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <h2>Professional Experience (expand to read)</h2>
+      <div class="grid">
+        <details class="accordion">
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Facility Manager — Venu Cold Storage Pvt. Ltd (India)</div>
+              <div class="sum-sub">Operations, logistics, inventory, team leadership</div>
+            </div>
+            <div class="sum-right">Aug 2023 – Jul 2024</div>
+          </summary>
+          <div class="acc-body">
+            <ul>
+              <li>Streamlined logistics operations; improved workplace efficiency by ~25% through cross-department coordination.</li>
+              <li>Implemented updated inventory management techniques to reduce downtime.</li>
+              <li>Trained staff on updated processes and improved operational adherence.</li>
+            </ul>
+            <div class="acc-actions">
+              <a class="btn small" href="mailto:hchaud12@asu.edu">Contact me →</a>
+              <a class="btn small" href="#leadership">Leadership proof →</a>
+            </div>
+          </div>
+        </details>
 
-      <div class="card box" id="about">
-        <h2>About</h2>
-        <p style="margin:0; color:var(--muted)">
-          Write 4–6 lines: who you are, what you care about, what roles you want.
-          Keep it simple and confident. Add 1–2 achievements if you have them.
-        </p>
-        <div class="cta" style="margin-top:14px">
-          <a class="btn" href="#" target="_blank" rel="noreferrer">Download Resume (PDF)</a>
-          <a class="btn" href="#contact">Contact →</a>
+        <details class="accordion">
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Engineering Trainee — Ayyan Multitrade LLP (India)</div>
+              <div class="sum-sub">Quality control, ISO 9001, throughput improvement</div>
+            </div>
+            <div class="sum-right">Nov 2021 – Dec 2021</div>
+          </summary>
+          <div class="acc-body">
+            <ul>
+              <li>Optimized quality control protocols and ensured compliance with ISO 9001 standards.</li>
+              <li>Analyzed production line inefficiencies; recommendations increased throughput by ~10%.</li>
+              <li>Maintained inventory, production supplies, and reports; explained variances.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <h2>Technical Skills</h2>
+      <div class="grid two">
+        <div class="card box">
+          <b>Process Modeling & Simulation</b>
+          <ul class="list">
+            <li>Aspen Plus, COMSOL Multiphysics, MATLAB, Simulink, ChemCAD</li>
+            <li>Material & Energy Balances, reactor operations, adsorption systems</li>
+          </ul>
+        </div>
+        <div class="card box">
+          <b>Sustainability & LCA</b>
+          <ul class="list">
+            <li>OpenLCA, SimaPro, Life Cycle Assessment (LCA), energy efficiency analysis</li>
+            <li>Techno-economic thinking, circular economy alignment</li>
+          </ul>
+        </div>
+        <div class="card box">
+          <b>Process Design & Documentation</b>
+          <ul class="list">
+            <li>AutoCAD, Plant 3D</li>
+            <li>PFD, P&ID, technical writing, process flow documentation</li>
+          </ul>
+        </div>
+        <div class="card box">
+          <b>Safety & Compliance</b>
+          <ul class="list">
+            <li>PHA, FMEA, ISO standards, OSHA standards, PPE protocols</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <div class="card box">
-        <p style="margin:0; color:var(--muted)">
-          Want to collaborate or hire me? Email me at
-          <a href="mailto:youremail@example.com" style="text-decoration:underline;">youremail@example.com</a>
-          or message me on
-          <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noreferrer" style="text-decoration:underline;">LinkedIn</a>.
-        </p>
-        <p class="small" style="margin:12px 0 0; color:var(--muted)">
-          Optional: add GitHub/Google Scholar/Behance links here.
-        </p>
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <h2>Education</h2>
+      <div class="grid two">
+        <div class="card box">
+          <b>Arizona State University (USA)</b><br/>
+          <span style="color:var(--muted); font-weight:900;">Master’s in Chemical Engineering • Expected May 2026 • GPA: 3.3</span>
+          <ul class="list">
+            <li>Transport Processes I</li>
+            <li>Thermodynamics of Chemical Systems</li>
+            <li>Sustainability and Circular Economy for Engineers</li>
+          </ul>
+        </div>
+        <div class="card box">
+          <b>Savitribai Phule Pune University (India)</b><br/>
+          <span style="color:var(--muted); font-weight:900;">Bachelor’s in Chemical Engineering • May 2023 • GPA: 3.8</span>
+          <ul class="list">
+            <li>Fluid Mechanics, Heat Transfer, Mass Transfer</li>
+            <li>Reaction Engineering, Separation Processes</li>
+            <li>Process Dynamics & Control, Chemical Process Safety</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section class="section" id="leadership">
+      <h2>Leadership & Activities</h2>
+      <div class="grid">
+        <details class="accordion">
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Project Leadership</div>
+              <div class="sum-sub">Student teams, COMSOL modeling, catalyst project development</div>
+            </div>
+            <div class="sum-right">Ongoing</div>
+          </summary>
+          <div class="acc-body">
+            <ul>
+              <li>Led multi-person student teams to hit milestones for modeling + technical project delivery.</li>
+              <li>Fostered collaboration, planning, and structured documentation.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Sports Coordinator</div>
+              <div class="sum-sub">Intercollegiate championships, logistics & coordination</div>
+            </div>
+            <div class="sum-right">—</div>
+          </summary>
+          <div class="acc-body">
+            <ul>
+              <li>Organized and managed intercollegiate events; logistics + coordination under timelines.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Team Leadership</div>
+              <div class="sum-sub">Managed a team of 47 workers; safety compliance + continuous improvement</div>
+            </div>
+            <div class="sum-right">—</div>
+          </summary>
+          <div class="acc-body">
+            <ul>
+              <li>Managed a team of 47 workers ensuring operational efficiency and safety compliance.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Public Speaking & Communication</div>
+              <div class="sum-sub">Won Debate Competition; strong presentation + persuasion</div>
+            </div>
+            <div class="sum-right">—</div>
+          </summary>
+          <div class="acc-body">
+            <ul>
+              <li>Debate competition winner; strong communication and critical thinking.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- REPORTS -->
+    <section class="section" id="reports">
+      <h2>Project Reports (what you need to add)</h2>
+      <div class="grid two">
+        <div class="card box">
+          <b>Best practice (free): Upload PDFs to your website repo</b>
+          <ul class="list">
+            <li>Create folders: <span class="kbd">/assets/reports</span> and <span class="kbd">/assets/images</span></li>
+            <li>Put your PDF report files inside <span class="kbd">/assets/reports</span></li>
+            <li>Then link them like: <span class="kbd">assets/reports/NPK-Urine-Report.pdf</span></li>
+          </ul>
+          <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn small" id="copyReportExample">Copy example link</button>
+            <button class="btn small" id="openModalReports">Show what to add</button>
+          </div>
+        </div>
+
+        <div class="card box">
+          <b>Alternative (also free): Use Google Drive / OneDrive links</b>
+          <ul class="list">
+            <li>Upload PDF to Drive</li>
+            <li>Set sharing to “Anyone with link can view”</li>
+            <li>Paste link into each project’s “Report” button</li>
+          </ul>
+          <div style="margin-top:10px; color:var(--muted); font-weight:900;">
+            If you upload your reports here, I can also extract the best highlights and add them to each project card.
+          </div>
+        </div>
       </div>
     </section>
 
     <div class="footer">
-      <div class="small">© <span id="y"></span> Your Name. Built with a single HTML file.</div>
-      <div class="small">Made with ❤️ + caffeine</div>
+      <div>© <span id="y"></span> Harshal Chaudhari • One-file interactive portfolio</div>
+      <div>Built with HTML/CSS/JS • Free hosting: GitHub Pages</div>
     </div>
   </main>
 
+  <!-- Floating buttons -->
+  <div class="floatbar">
+    <button class="btn small" id="topBtn" title="Back to top">↑ Top</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Project details">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Title</div>
+        <button class="btn small" id="modalClose">Close</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    // ---------- Helpers ----------
+    const $ = (q, el=document) => el.querySelector(q);
+    const $$ = (q, el=document) => Array.from(el.querySelectorAll(q));
+    const toastEl = $("#toast");
+
+    function toast(msg){
+      toastEl.textContent = msg;
+      toastEl.style.display = "block";
+      clearTimeout(window.__t);
+      window.__t = setTimeout(()=> toastEl.style.display="none", 2200);
+    }
+
+    // ---------- Theme toggle (saved) ----------
+    const themeBtn = $("#themeBtn");
+    const savedTheme = localStorage.getItem("theme");
+    if(savedTheme){ document.documentElement.setAttribute("data-theme", savedTheme); }
+    setThemeIcon();
+
+    themeBtn.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme");
+      const next = cur === "light" ? "" : "light";
+      if(next) document.documentElement.setAttribute("data-theme", next);
+      else document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("theme", next);
+      setThemeIcon();
+    });
+
+    function setThemeIcon(){
+      const cur = document.documentElement.getAttribute("data-theme");
+      themeBtn.textContent = cur === "light" ? "☀️" : "🌙";
+    }
+
+    // ---------- Footer year ----------
+    $("#y").textContent = new Date().getFullYear();
+
+    // ---------- Back to top ----------
+    $("#topBtn").addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+
+    // ---------- Nav active link highlight ----------
+    const sections = ["projects","experience","skills","education","leadership","reports"].map(id => document.getElementById(id));
+    const navLinks = $$("#navLinks a");
+
+    const obs = new IntersectionObserver((entries)=>{
+      const visible = entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(!visible) return;
+      const id = visible.target.id;
+      navLinks.forEach(a=>a.classList.toggle("active", a.getAttribute("href")==="#"+id));
+    }, {rootMargin:"-35% 0px -55% 0px", threshold:[0.05,0.10,0.20]});
+
+    sections.forEach(s => s && obs.observe(s));
+
+    // ---------- Accordions expand/collapse ----------
+    const accordions = $$("details.accordion");
+    $("#expandAllBtn").addEventListener("click", ()=> { accordions.forEach(d=>d.open=true); toast("Expanded all sections"); });
+    $("#collapseAllBtn").addEventListener("click", ()=> { accordions.forEach(d=>d.open=false); toast("Collapsed all sections"); });
+
+    // ---------- Projects: filters + search ----------
+    const chips = $$("#chips .chip");
+    const projects = $$("#projectGrid .project");
+    const searchInput = $("#searchInput");
+    let activeFilter = "all";
+
+    chips.forEach(chip => chip.addEventListener("click", ()=>{
+      chips.forEach(c=>c.classList.remove("active"));
+      chip.classList.add("active");
+      activeFilter = chip.dataset.filter;
+      applyProjectFilters();
+    }));
+
+    searchInput.addEventListener("input", applyProjectFilters);
+
+    function applyProjectFilters(){
+      const q = (searchInput.value || "").trim().toLowerCase();
+      projects.forEach(card=>{
+        const tags = (card.dataset.tags || "");
+        const title = (card.dataset.title || "").toLowerCase();
+        const text = card.textContent.toLowerCase();
+
+        const matchesFilter = activeFilter === "all" ? true : tags.includes(activeFilter);
+        const matchesSearch = !q ? true : (title.includes(q) || text.includes(q));
+        card.style.display = (matchesFilter && matchesSearch) ? "" : "none";
+      });
+    }
+
+    // ---------- Modal content ----------
+    const modalBackdrop = $("#modalBackdrop");
+    const modalTitle = $("#modalTitle");
+    const modalBody = $("#modalBody");
+    const modalFooter = $("#modalFooter");
+    $("#modalClose").addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", (e)=>{ if(e.target === modalBackdrop) closeModal(); });
+    document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeModal(); });
+
+    const projectDetails = {
+      p1: {
+        title: "NPK Extraction from Human Urine — Aspen Plus (ELECNRTL)",
+        bullets: [
+          "Designed and simulated integrated ammonia stripping + precipitation + evaporation for sustainable NPK recovery.",
+          "Modeled electrolyte chemistry + solid precipitation (struvite, hydroxyapatite).",
+          "Resolved charge balance, reaction dependency, and convergence issues (typical ELECNRTL challenges).",
+          "Performed mass & energy balances (1000 kg/hr feed) and optimized pH, temperature, and air-to-liquid ratio.",
+          "Added scale-up evaluation, equipment justification, and preliminary techno-economic assessment."
+        ],
+        tags: ["Aspen Plus", "ELECNRTL", "Struvite", "Circular economy"],
+        links: [
+          {label:"Add Report PDF", href:"#reports"},
+          {label:"Email me", href:"mailto:hchaud12@asu.edu"}
+        ]
+      },
+      p2: {
+        title: "LCA of Lignocellulosic Biomass to Jet Fuel — RCF + HDO",
+        bullets: [
+          "Cradle-to-grave LCA for poplar wood to biojet fuel via RCF and Hydrodeoxygenation (HDO).",
+          "Mass & energy balance analysis; fuel heating value ~43.54 MJ/kg (Jet A-1 comparable).",
+          "Quantified environmental impacts and demonstrated low GWP per kg biomass processed (per your report).",
+          "Evaluated feasibility and scalability for net-zero aviation strategies."
+        ],
+        tags: ["LCA", "OpenLCA/SimaPro", "RCF", "HDO"],
+        links: [{label:"Add Report PDF", href:"#reports"}]
+      },
+      p3: {
+        title: "Steam Reformer Simulation Analysis — COMSOL Multiphysics",
+        bullets: [
+          "Designed multiphysics simulations of a propane steam reformer with catalytic bed + heating tubes.",
+          "Studied effect of heating tube thickness on temperature distribution and species mass fractions.",
+          "Analyzed gradients and profiles: C3H8, H2O, H2, CO, CO2 under co-current and counter-current flows.",
+          "Compared simulation results to published test cases to identify optimal parameters and reduce CO formation."
+        ],
+        tags: ["COMSOL", "Reactor modeling", "Hydrogen production"],
+        links: [{label:"Add Report PDF", href:"#reports"}]
+      },
+      p4: {
+        title: "Life Cycle Analysis of Ammonia Production — PEM Electrolysis",
+        bullets: [
+          "Researched renewable ammonia production via PEM electrolysis to reduce Haber–Bosch emissions.",
+          "Designed and analyzed model capable of ~1000–1500 metric tons/day production.",
+          "Evaluated CO2 reduction potential and energy efficiency vs traditional process; captured economic factors."
+        ],
+        tags: ["Sustainability", "Ammonia", "PEM electrolysis"],
+        links: [{label:"Add Report PDF", href:"#reports"}]
+      },
+      p5: {
+        title: "Porous Polymeric Adsorbent — Phenol Removal from Water",
+        bullets: [
+          "Synthesized polymeric adsorbents (styrene, divinyl benzene, methacrylate) to enhance phenol adsorption.",
+          "Designed an economically viable adsorption process; achieved ~20% cost reduction over conventional methods.",
+          "Performed kinetics and isotherm studies; presented findings at university-sponsored symposium."
+        ],
+        tags: ["Adsorption", "Wastewater", "Process design"],
+        links: [{label:"Add Report PDF", href:"#reports"}]
+      },
+      p6: {
+        title: "Add your next project (template)",
+        bullets: [
+          "Duplicate any project card in the HTML and edit the title/description/tags.",
+          "Add a 'Report' link once you have a PDF.",
+          "If you share your report, I can extract results and turn it into bullets/metrics."
+        ],
+        tags: ["Template"],
+        links: [{label:"Jump to Reports section", href:"#reports"}]
+      }
+    };
+
+    $$("[data-open]").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const key = btn.dataset.open;
+        openModal(projectDetails[key]);
+      });
+    });
+
+    function openModal(data){
+      if(!data) return;
+      modalTitle.textContent = data.title;
+      modalBody.innerHTML = `
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+          ${(data.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")}
+        </div>
+        <ul>
+          ${(data.bullets||[]).map(b=>`<li>${b}</li>`).join("")}
+        </ul>
+        <div style="margin-top:10px; font-weight:900; color:var(--muted);">
+          Want this stronger? Add metrics (%, kg/hr, yields, energy, cost) and attach your report PDF.
+        </div>
+      `;
+      modalFooter.innerHTML = (data.links||[]).map(l=>`<a class="btn small" href="${l.href}">${l.label}</a>`).join("");
+      modalBackdrop.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal(){
+      modalBackdrop.style.display = "none";
+      document.body.style.overflow = "";
+    }
+
+    // ---------- Reports helpers ----------
+    $("#copyReportExample").addEventListener("click", async ()=>{
+      const example = "assets/reports/NPK-Urine-Report.pdf";
+      try{
+        await navigator.clipboard.writeText(example);
+        toast("Copied: " + example);
+      }catch{
+        toast("Copy not supported here — example: " + example);
+      }
+    });
+
+    $("#openModalReports").addEventListener("click", ()=>{
+      openModal({
+        title:"What reports should you add?",
+        tags:["PDFs", "Screenshots", "Figures", "Results"],
+        bullets:[
+          "For each project, add a 1–5 page PDF: objective → method → key results → conclusion.",
+          "Include 1–3 figures: flowsheet, model geometry, plots, LCA impact chart, etc.",
+          "Add strong numbers: recovery %, yield, GWP, energy use, CO reduction, throughput change, cost impact.",
+          "If you don’t want full reports public, publish a 1-page summary and keep full report private."
+        ],
+        links:[
+          {label:"Back to Reports section", href:"#reports"},
+          {label:"Email me", href:"mailto:hchaud12@asu.edu"}
+        ]
+      });
+    });
+
+    // ---------- Guided Tour (go through once) ----------
+    const tourBtn = $("#tourBtn");
+    const tourStops = [
+      {id:"projects", msg:"Step 1/6: Projects — use search + filters + open Details."},
+      {id:"experience", msg:"Step 2/6: Experience — expand to read impact bullets."},
+      {id:"skills", msg:"Step 3/6: Skills — tools and strengths (edit anytime)."},
+      {id:"education", msg:"Step 4/6: Education — confirm coursework + GPA."},
+      {id:"leadership", msg:"Step 5/6: Leadership — expand to show leadership proof."},
+      {id:"reports", msg:"Step 6/6: Reports — add PDF reports for each project."},
+    ];
+    let tourIndex = 0;
+
+    tourBtn.addEventListener("click", ()=>{
+      tourIndex = 0;
+      runTourStep();
+    });
+
+    function runTourStep(){
+      const step = tourStops[tourIndex];
+      const el = document.getElementById(step.id);
+      if(!el) return;
+      el.scrollIntoView({behavior:"smooth", block:"start"});
+      toast(step.msg);
+      tourIndex++;
+      if(tourIndex < tourStops.length){
+        setTimeout(runTourStep, 1400);
+      }else{
+        setTimeout(()=>toast("Tour done ✅ Update project reports next."), 1600);
+      }
+    }
   </script>
 </body>
 </html>
