@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Portfolio website for Your Name: projects, skills, and contact." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#111a33;
+      --muted:#8ea0c6;
+      --text:#eaf0ff;
+      --accent:#7c5cff;
+      --accent2:#22c55e;
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1040px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(124,92,255,.30), transparent 60%),
+        radial-gradient(900px 500px at 85% 10%, rgba(34,197,94,.20), transparent 60%),
+        radial-gradient(900px 500px at 50% 90%, rgba(56,189,248,.18), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
+    .nav{
+      position: sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,16,32,.55);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{max-width:var(--max); margin:0 auto; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
+    .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--accent), #38bdf8)}
+    .links{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    .links a{padding:8px 10px; border:1px solid transparent; border-radius:999px; color:var(--muted)}
+    .links a:hover{border-color:var(--border); color:var(--text)}
+    .hero{padding:44px 0 20px; display:grid; grid-template-columns: 1.25fr .75fr; gap:22px; align-items:stretch}
+    @media (max-width: 880px){ .hero{grid-template-columns:1fr} }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-main{padding:28px}
+    .kicker{color:var(--muted); font-weight:600; letter-spacing:.3px}
+    h1{margin:10px 0 10px; font-size:44px; line-height:1.08}
+    @media (max-width: 520px){ h1{font-size:36px} }
+    .sub{color:var(--muted); max-width:62ch; margin:0 0 18px}
+    .pill-row{display:flex; gap:10px; flex-wrap:wrap; margin:16px 0 0}
+    .pill{
+      font-size:13px; color:var(--muted);
+      border:1px solid var(--border);
+      padding:8px 10px; border-radius:999px;
+      background: rgba(255,255,255,.03);
+    }
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px; padding:12px 14px;
+      border-radius:12px; border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color:var(--text); font-weight:700;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), #38bdf8);
+    }
+    .btn.good{
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent2), #22c55e);
+      color:#06210f;
+    }
+    .hero-side{display:grid; grid-template-rows:auto 1fr; gap:14px; padding:16px}
+    .mini{padding:18px}
+    .mini h3{margin:0 0 8px; font-size:16px}
+    .mini p{margin:0; color:var(--muted)}
+    .avatar{
+      width:66px; height:66px; border-radius:18px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(124,92,255,.45), rgba(56,189,248,.35));
+      border:1px solid var(--border);
+      font-weight:900; font-size:22px;
+    }
+    .section{margin-top:26px}
+    .section h2{margin:0 0 12px; font-size:18px; letter-spacing:.2px}
+    .grid{display:grid; gap:14px}
+    .projects{grid-template-columns: repeat(3, 1fr)}
+    @media (max-width: 980px){ .projects{grid-template-columns: repeat(2, 1fr)} }
+    @media (max-width: 640px){ .projects{grid-template-columns: 1fr} }
+    .proj{padding:18px}
+    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .tag{font-size:12px; color:var(--muted); border:1px solid var(--border); padding:6px 8px; border-radius:999px}
+    .proj h3{margin:0 0 6px; font-size:16px}
+    .proj p{margin:0; color:var(--muted)}
+    .proj .meta{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
+    .proj .meta a{font-weight:700; color:var(--text); opacity:.9}
+    .proj .meta a:hover{opacity:1; text-decoration:underline}
+    .two{grid-template-columns: 1fr 1fr}
+    @media (max-width: 860px){ .two{grid-template-columns:1fr} }
+    .box{padding:18px}
+    ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    li{margin:6px 0}
+    .footer{margin-top:30px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .small{font-size:13px}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--border); padding:4px 8px; border-radius:10px;
+      background: rgba(255,255,255,.03);
+    }
+    .notice{margin-top:10px; color:var(--muted); font-size:13px}
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Your Name</span>
+      </div>
+      <div class="links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="card hero-main">
+        <div class="kicker">PORTFOLIO • 2026</div>
+        <h1>Hi, I’m <span style="color:#c7b9ff;">Your Name</span> —<br/>I build <span style="color:#a7f3d0;">impactful</span> things.</h1>
+        <p class="sub">
+          Write a 2–3 line intro here. Example: “I’m a student / engineer / designer focused on process engineering,
+          sustainability, and practical solutions. Here are a few projects I’m proud of.”
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects →</a>
+          <a class="btn" href="mailto:youremail@example.com">Email Me</a>
+          <a class="btn good" href="https://linkedin.com/in/yourhandle" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+
+        <div class="pill-row">
+          <span class="pill">📍 Phoenix / Remote</span>
+          <span class="pill">🧪 Process & Sustainability</span>
+          <span class="pill">⚡ Open to internships</span>
+          <span class="pill">📄 Resume available</span>
+        </div>
+
+        <div class="notice">
+          Tip: Replace text like <span class="kbd">Your Name</span>, <span class="kbd">youremail@example.com</span>, and your links.
+        </div>
+      </div>
+
+      <div class="card hero-side">
+        <div class="card mini" style="box-shadow:none;">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div class="avatar">YN</div>
+            <div>
+              <h3 style="margin:0">Quick Info</h3>
+              <p style="margin:4px 0 0; color:var(--muted)">Your title (e.g., Chemical Engineering Student)</p>
+            </div>
+          </div>
+        </div>
+        <div class="card mini" style="box-shadow:none;">
+          <h3>Highlights</h3>
+          <p>• Strong interest in sustainability + engineering</p>
+          <p>• Projects: modeling, simulation, research</p>
+          <p>• Tools: Aspen / COMSOL / MATLAB (edit)</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+      <div class="grid projects">
+        <div class="card proj">
+          <h3>Project 1 — Title</h3>
+          <p>1–2 lines: what you did + result. Example: “Modeled X, improved Y by Z%, validated with …”</p>
+          <div class="tagrow">
+            <span class="tag">Aspen</span><span class="tag">Process</span><span class="tag">Sustainability</span>
+          </div>
+          <div class="meta">
+            <a href="#" target="_blank" rel="noreferrer">Case Study</a>
+            <a href="#" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+
+        <div class="card proj">
+          <h3>Project 2 — Title</h3>
+          <p>1–2 lines describing the project. Mention metrics or outcome if possible.</p>
+          <div class="tagrow">
+            <span class="tag">COMSOL</span><span class="tag">Modeling</span><span class="tag">CFD</span>
+          </div>
+          <div class="meta">
+            <a href="#" target="_blank" rel="noreferrer">Report</a>
+            <a href="#" target="_blank" rel="noreferrer">Demo</a>
+          </div>
+        </div>
+
+        <div class="card proj">
+          <h3>Project 3 — Title</h3>
+          <p>Short description. Keep it clear and outcomes-focused.</p>
+          <div class="tagrow">
+            <span class="tag">Research</span><span class="tag">Adsorption</span><span class="tag">Wastewater</span>
+          </div>
+          <div class="meta">
+            <a href="#" target="_blank" rel="noreferrer">Slides</a>
+            <a href="#" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section grid two" id="skills">
+      <div class="card box">
+        <h2>Skills</h2>
+        <ul>
+          <li><b>Engineering:</b> process modeling, mass transfer, reactor basics (edit)</li>
+          <li><b>Software:</b> Aspen Plus, COMSOL, MATLAB/Excel (edit)</li>
+          <li><b>Methods:</b> LCA, data analysis, optimization (edit)</li>
+        </ul>
+      </div>
+
+      <div class="card box" id="about">
+        <h2>About</h2>
+        <p style="margin:0; color:var(--muted)">
+          Write 4–6 lines: who you are, what you care about, what roles you want.
+          Keep it simple and confident. Add 1–2 achievements if you have them.
+        </p>
+        <div class="cta" style="margin-top:14px">
+          <a class="btn" href="#" target="_blank" rel="noreferrer">Download Resume (PDF)</a>
+          <a class="btn" href="#contact">Contact →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <div class="card box">
+        <p style="margin:0; color:var(--muted)">
+          Want to collaborate or hire me? Email me at
+          <a href="mailto:youremail@example.com" style="text-decoration:underline;">youremail@example.com</a>
+          or message me on
+          <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noreferrer" style="text-decoration:underline;">LinkedIn</a>.
+        </p>
+        <p class="small" style="margin:12px 0 0; color:var(--muted)">
+          Optional: add GitHub/Google Scholar/Behance links here.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div class="small">© <span id="y"></span> Your Name. Built with a single HTML file.</div>
+      <div class="small">Made with ❤️ + caffeine</div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
